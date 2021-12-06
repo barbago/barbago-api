@@ -1,10 +1,11 @@
 {
-  "name": "express-typescript-template",
+  "name": "barbago-api",
   "version": "1.0.0",
-  "description": "Complete template for an Express app using Typescript",
+  "description": "Barbago's backend REST API written with Express and TypeScript",
   "main": "src/index.ts",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rm -rf ./dist ./docs",
@@ -15,19 +16,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julian-hecker/express-ts-template.git"
+    "url": "git+https://github.com/barbago/barbago-api.git"
   },
   "author": "Julian Hecker",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/julian-hecker/express-ts-template/issues"
+    "url": "https://github.com/barbago/barbago-api/issues"
   },
-  "homepage": "https://github.com/julian-hecker/express-ts-template#readme",
+  "homepage": "https://github.com/barbago/barbago-api#readme",
   "apidoc": {
-    "name": "Express App",
+    "name": "Barbago API",
     "version": "1.0.0",
-    "title": "Express App Template API Documentation",
-    "description": "Sample Express App Documentation",
+    "title": "Barbago API Docs",
+    "description": "Documentation for Barbago's backend REST API written with Express and TypeScript",
     "url": "http://localhost:3000",
     "sampleUrl": "http://localhost:3000"
   },
