@@ -25,3 +25,13 @@ userRouter.get('/', userController.getAllUsers);
  * @apiVersion 1.0.0
 */
 userRouter.get('/:id', userController.getUserByName);
+
+
+/**
+ * @api {post} /user Register a user
+ * 
+ * @apiGroup Users
+ * @apiName registerUser
+ * @apiVersion 1.0.0
+ */
+userRouter.post('/', ()=>{})
