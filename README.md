@@ -10,14 +10,18 @@ The Barbago API uses Firebase for hosting and deployment as well as handling aut
 
 [Unit Testing Firebase Functions](https://firebase.google.com/docs/functions/unit-testing)
 
+## Environment
+
+Environment variables are set direclty in the Firebase command line. These can be pushed to production with a `firebase deploy`.
+
+You can set variables one at a time or use a json file in the below format:
+`firebase functions:config:set database="$(cat env/database.json)"`
 
 ## Notes
 
 Will be hosted using Firebase. Simplest way to perform hosting, deployment, authentication, etc. Using authentication on a custom backend server just complicates everything. Firebase tokens expire after one hour, meaning you'd have to reauthenticate every. single. hour.
 
 You can also access a MySQL server from within Firebase, so the default usage of firestore is not a major limitation.
-
-
 
 ```SQL
 /* https://gis.stackexchange.com/questions/356835/sorting-by-distance-in-mysql */
@@ -81,13 +85,14 @@ use express server
 - Security rules are convoluted
 - Not really used in production
 
-
 ### Use What Instead?
 
 AWS Lambda and API Gateway
+
 - These services will be better to learn in the long run for employment
 
 Heroku
+
 - Heroku has slow starts at first and quickly becomes expensive
 - It's a great way to start developing and deploying an express app
 
@@ -97,4 +102,3 @@ Heroku is a balance of AWS and Firebase. Great developer experience, endless fle
 
 https://aws.amazon.com/getting-started/hands-on/deploy-nodejs-web-app/services-costs/?p=gsrc&c=ho_dnwa
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/nodejs-dynamodb-tutorial.html?p=gsrc&c=ho_dnwa
-

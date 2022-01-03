@@ -4,10 +4,6 @@ const isEnv = dotenv.config();
 
 if (!isEnv) throw new Error('Could not find .env file!');
 
-export const env = process.env.NODE_ENV;
-
-export const config = {
-  port: parseInt(process.env.PORT ?? '3000'),
-};
-
-export { serviceAccount } from './firebase';
+export * as config from './config';
+export * as database from './database';
+export * as environment from './environment';
