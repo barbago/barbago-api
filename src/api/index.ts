@@ -6,11 +6,9 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
-import {
-  errorHandler,
-  notFoundHandler,
-} from './middlewares';
+import { errorHandler, notFoundHandler } from './middlewares';
 import { router } from './routes';
+
 export const app = express();
 
 app.use(express.json());
