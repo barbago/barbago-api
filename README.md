@@ -6,6 +6,10 @@ This repository contains the codebase for Barbago's backend REST API.
 
 The Barbago API uses Firebase for hosting and deployment as well as handling authentication.
 
+## Testing
+
+[Unit Testing Firebase Functions](https://firebase.google.com/docs/functions/unit-testing)
+
 
 ## Notes
 
