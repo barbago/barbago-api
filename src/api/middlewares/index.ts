@@ -1,4 +1,4 @@
-// export { checkAuthorization } from './checkAuthorization';
-// export { isAuthenticated } from './isAuthenticated';
-// export { decodeToken } from './decodeToken';
+export { decodeToken } from './decodeToken';
 export { errorHandler, notFoundHandler } from './errorHandler';
+export { hasRole, Role } from './hasRole';
+export { isAuthenticated } from './isAuthenticated';
