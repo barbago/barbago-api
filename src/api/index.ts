@@ -8,6 +8,7 @@ import morgan from 'morgan';
 
 import { errorHandler, notFoundHandler } from './middlewares';
 import { router } from './routes';
+import { connect } from './config/database';
 
 export const app = express();
 
@@ -19,6 +20,10 @@ app.use(helmet());
 app.use(morgan('tiny'));
 
 app.use(router);
+
+app.get('/', async (req, res) => {
+  const connection = await connect();
+})
 
 app.use(notFoundHandler);
 app.use(errorHandler);

@@ -9,14 +9,6 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@app/*": ["./*", "index.ts"],
-      "@config/*": ["config/*", "config"],
-      "@features/*": ["features/*", "features"],
-      "@middlewares/*": ["middlewares/*", "middlewares"],
-      "@utils/*": ["utils/*", "utils"]
-    },
     // source maps
     "sourceMap": true,
     // strict checking and linting

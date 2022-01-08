@@ -6,7 +6,7 @@ export const notFoundHandler = (
   _res: Response,
   _next: NextFunction,
 ) => {
-  throw httpError(404, 'Resource not found');
+  throw httpError(404);
 };
 
 export const errorHandler = (

@@ -6,6 +6,7 @@ import {
 } from 'typeorm';
 
 import { config, environment } from './';
+import { entities } from '../entities';
 
 const { host, port, name, username, password, prod_host } = config;
 
@@ -18,9 +19,7 @@ export const dbConfig: ConnectionOptions = {
   password: password,
   synchronize: true,
   logging: true,
-  // Todo: entities must be included
-  // https://typeorm.io/#/entities
-  // entities: ['lib/api/**/*.entity.js'],
+  entities: [...entities],
 
   ...(environment.isProd && {
     host: prod_host,

@@ -9,5 +9,5 @@ export function isAuthenticated(
   next: NextFunction,
 ) {
   if (req['currentUser'] as DecodedIdToken) next();
-  else throw httpError(401, 'Not Authenticated');
+  else throw httpError(401);
 }

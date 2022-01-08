@@ -12,7 +12,7 @@ export enum Role {
 export function hasRole(role: Role) {
   return (req: Request, res: Response, next: NextFunction) => {
     const currentUser = req['currentUser'] as DecodedIdToken;
-    if (!currentUser) throw httpError(401, 'Unauthorized');
+    if (!currentUser) throw httpError(401);
     auth()
       .getUser(currentUser.uid)
       .then((user) => {

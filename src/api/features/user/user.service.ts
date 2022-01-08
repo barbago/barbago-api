@@ -1,18 +1,42 @@
 import { Service } from 'typedi';
+import { DeepPartial } from 'typeorm';
 
-import { UserRepository } from './user.repository';
+import { connect } from '../../config/database';
+import { User } from '../../entities';
 
 @Service()
 export class UserService {
-  constructor(private userRepository: UserRepository) {}
+  private async getUserRepository() {
+    const connection = await connect();
+    const userRepository = connection.getRepository(User);
+    return userRepository;
+  }
 
   public getUsers = async () => {
-    const users = await this.userRepository.getAllUsers();
+    const userRepo = await this.getUserRepository();
+    const users = await userRepo.find();
     return users;
-  };
+  }
 
-  public getUser = async (name: string) => {
-    const user = await this.userRepository.getUserByName(name);
+  public getUser = async (uid: string) => {
+    const userRepo = await this.getUserRepository();
+    const user = await userRepo.findOne(uid);
     return user;
-  };
+  }
+
+  public createUser = async (user: User) => {
+    const userRepo = await this.getUserRepository();
+    return await userRepo.create(user).save();
+  }
+
+  public updateUser = async (uid: string, user: DeepPartial<User>) => {
+    const userRepo = await this.getUserRepository();
+    return await userRepo.update(uid, user);
+  }
+
+  public deleteUser = async (uid: string) => {
+    const userRepo = await this.getUserRepository();
+    return await userRepo.delete(uid);
+  }
+
 }
