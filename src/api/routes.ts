@@ -1,11 +1,10 @@
 import { Router } from 'express';
 
 import { userRouter } from './features/user';
-import { decodeToken } from './middlewares';
 
 export const router = Router();
 
-router.use('/user', [decodeToken], userRouter);
+router.use('/user', userRouter);
 
 /**
  * @apiDefine BearerAuth

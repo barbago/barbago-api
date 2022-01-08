@@ -15,7 +15,13 @@ The Barbago API uses Firebase for hosting and deployment as well as handling aut
 Environment variables are set direclty in the Firebase command line. These can be pushed to production with a `firebase deploy`.
 
 You can set variables one at a time or use a json file in the below format:
-`firebase functions:config:set database="$(cat env/database.json)"`
+`firebase functions:config:set env="$(cat env/config.json)"`
+
+## Todo
+
+- Use tokens to get req['userRole'], util funcs
+- Create an ERD for the different models and relationships
+
 
 ## Notes
 
@@ -53,52 +59,3 @@ LIMIT 0 , 20;
 
 ```
 
-## TO DO
-
-- Set up a @barbago organization
-- Refactor into separate repositories
-- Add more screens to UI
-- Decide if we're really using firebase (Why?)
-- Plan out the backend collecitons
--
-- Start coding frontend and backend together
-- Write tests
-- Get stuff deployed
-
-### Why Use Firebase
-
-fast to start up
-simple authentication
-integrates with mobile
-scales easily
-great developer experience
-use express server
-
-### Whyn't Use Firebase
-
-!!! NO SQL DATABASE
-
-- Can learn how to deal with this
-- Querying sucks, this might be very bad
-- Not flexible at all
-- Highly couples code to platform
-- Security rules are convoluted
-- Not really used in production
-
-### Use What Instead?
-
-AWS Lambda and API Gateway
-
-- These services will be better to learn in the long run for employment
-
-Heroku
-
-- Heroku has slow starts at first and quickly becomes expensive
-- It's a great way to start developing and deploying an express app
-
-### What am I gonna do?
-
-Heroku is a balance of AWS and Firebase. Great developer experience, endless flexibility. This will let me more easily transition to AWS when it's time to go into prod.
-
-https://aws.amazon.com/getting-started/hands-on/deploy-nodejs-web-app/services-costs/?p=gsrc&c=ho_dnwa
-https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/nodejs-dynamodb-tutorial.html?p=gsrc&c=ho_dnwa
