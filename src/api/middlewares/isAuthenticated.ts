@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { DecodedIdToken } from 'firebase-admin/lib/auth/token-verifier';
+import { UserRecord } from 'firebase-admin/lib/auth/user-record';
 import httpError from 'http-errors';
 
 // https://fireship.io/snippets/express-middleware-auth-token-firebase/
@@ -8,6 +8,6 @@ export function isAuthenticated(
   res: Response,
   next: NextFunction,
 ) {
-  if (req['currentUser'] as DecodedIdToken) next();
+  if (req['user'] as UserRecord) next();
   else throw httpError(401);
 }

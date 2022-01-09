@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import httpError from 'http-errors';
-import { auth } from 'firebase-admin';
-import { DecodedIdToken } from 'firebase-admin/lib/auth/token-verifier';
+import { UserRecord } from 'firebase-admin/lib/auth/user-record';
 
 export enum Role {
   ADMIN = 'ADMIN',
@@ -9,32 +8,25 @@ export enum Role {
   CLIENT = 'CLIENT',
 }
 
-export function hasRole(role: Role) {
-  return (req: Request, res: Response, next: NextFunction) => {
-    const currentUser = req['currentUser'] as DecodedIdToken;
-    if (!currentUser) throw httpError(401);
-    auth()
-      .getUser(currentUser.uid)
-      .then((user) => {
-        if (user?.customClaims?.roles?.includes(role)) {
-          return next();
-        }
-        res.status(403).json({
-          status: 403,
-          message: 'Forbidden',
-        });
-      });
-  };
+export function isRole(role: Role) {
+  return (req: Request, _res: Response, next: NextFunction) => {
+    const user = req['user'] as UserRecord;
+    if (!user) throw httpError(401);
+    if (user.customClaims?.roles?.includes(role)) {
+      return next();
+    }
+    throw httpError(403);
+  }
 }
 
-export const isAdmin = hasRole(Role.ADMIN);
+export const isRoleAdmin = isRole(Role.ADMIN);
 
-export const isBarber = hasRole(Role.BARBER);
+export const isRoleBarber = isRole(Role.BARBER);
 
-export const isClient = hasRole(Role.CLIENT);
+export const isRoleClient = isRole(Role.CLIENT);
 
 /*
-Barbago is using Role Base Access Control by setting custom claims with Firebase.
+Barbago is using Role Based Access Control by setting custom claims with Firebase.
 
 https://firebase.google.com/docs/auth/admin/custom-claims
 

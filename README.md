@@ -21,6 +21,7 @@ You can set variables one at a time or use a json file in the below format:
 
 - Use tokens to get req['userRole'], util funcs
 - Create an ERD for the different models and relationships
+- Create [GitHub Action Firebase Workflow](https://medium.com/firebase-developers/the-comprehensive-guide-to-github-actions-and-firebase-hosting-818502d86c31)
 
 
 ## Notes

@@ -1,8 +1,16 @@
 {
   "functions": {
     "source": "./",
-    "predeploy": [
-      "npm run build"
+    "predeploy": ["npm run build"]
+  },
+  "hosting": {
+    "predeploy": ["npm run docs"],
+    "public": "docs",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }

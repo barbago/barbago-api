@@ -13,7 +13,7 @@ router.use('/user', userRouter);
  * @apiHeader {String} [Authorization="Bearer "] Bearer token from Firebase Auth
  * @apiHeaderExample {json} Authorization Example:
  * {
- *     "Authorization": "Bearer ey.token-from-firebase-auth"
+ *   "Authorization": "Bearer ey.token-from-firebase-auth"
  * }
  */
 
@@ -25,8 +25,8 @@ router.use('/user', userRouter);
  * @apiErrorExample BadRequest response:
  * Error 400: Bad Request
  * {
- *     "status": 400,
- *     "message": "Bad Request"
+ *   "status": 400,
+ *   "message": "Bad Request"
  * }
  */
 
@@ -38,8 +38,8 @@ router.use('/user', userRouter);
  * @apiErrorExample  Unauthorized response:
  * Error 401: Unauthorized
  * {
- *     "status": 401,
- *     "message": "Unauthorized"
+ *   "status": 401,
+ *   "message": "Unauthorized"
  * }
  */
 
@@ -51,8 +51,8 @@ router.use('/user', userRouter);
  * @apiErrorExample Forbidden response:
  * Error 403: Forbidden
  * {
- *     "status": 403,
- *     "message": "Forbidden"
+ *   "status": 403,
+ *   "message": "Forbidden"
  * }
  */
 
@@ -64,7 +64,7 @@ router.use('/user', userRouter);
  * @apiErrorExample NotFound response:
  * Error 404: Not Found
  * {
- *     "status": 404,
- *     "message": "Not Found"
+ *   "status": 404,
+ *   "message": "Not Found"
  * }
  */

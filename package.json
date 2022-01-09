@@ -14,9 +14,9 @@
     "docs:watch": "nodemon --watch **/*.routes.ts --exec \"npm run docs\" src/index.ts ",
     "test": "jest",
     "test:watch": "jest --watch",
-    "serve": "firebase emulators:start --only functions",
+    "serve": "firebase emulators:start --only functions,hosting",
     "shell": "npm run build && firebase functions:shell",
-    "deploy": "firebase deploy --only functions",
+    "deploy": "firebase deploy --only functions,hosting",
     "logs": "firebase functions:log"
   },
   "repository": {
@@ -37,7 +37,7 @@
     "version": "1.0.0",
     "title": "Barbago API Docs",
     "description": "Documentation for Barbago's backend REST API written with Express and TypeScript",
-    "url": "http://localhost:5001/barbago-859cf/us-central1/api",
+    "url": "https://us-central1-barbago-859cf.cloudfunctions.net/api",
     "sampleUrl": "http://localhost:5001/barbago-859cf/us-central1/api"
   },
   "dependencies": {

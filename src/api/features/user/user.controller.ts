@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import asyncHandler from 'express-async-handler';
+import { UserRecord } from 'firebase-admin/lib/auth/user-record';
+import httpError from 'http-errors';
 import { Service } from 'typedi';
-import { DecodedIdToken } from 'firebase-admin/lib/auth/token-verifier';
+import { User } from '.';
 
 import { UserService } from './user.service';
 
@@ -9,26 +11,89 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private userService: UserService) {}
 
-  public getAllUsers = asyncHandler(async (req: Request, res: Response) => {
-    const users = this.userService.getUsers();
-    res.json(users);
-  });
+  public getAllUsers = asyncHandler(
+    async (req: Request, res: Response) => {
+      const limit = parseInt((req.query.limit as string) ?? '20');
+      let offset = parseInt((req.query.offset as string) ?? '0');
+      if (offset > 20) offset = 20;
 
-  public getUser = asyncHandler(async (req: Request, res: Response) => {
+      const users = await this.userService.getAllUsers(limit, offset);
+      res.json(users);
+    },
+  );
 
-  });
+  public getCurrentUser = asyncHandler(
+    async (req: Request, res: Response) => {
+      const user = req['user'] as UserRecord;
+      if (!user) throw httpError(401);
+      const found = await this.userService.getUser(user.uid);
+      if (!found) throw httpError(404);
+      res.json(found);
+    },
+  );
 
-  public createUser = asyncHandler(async (req: Request, res: Response) => {
-    const currentUser = req['currentUser'] as DecodedIdToken;
-  });
+  public getUserById = asyncHandler(
+    async (req: Request, res: Response) => {
+      const { uid } = req.params;
+      const found = await this.userService.getUser(uid);
+      if (!found) throw httpError(404);
+      res.json(found);
+    },
+  );
 
-  public deleteUser = asyncHandler(async (req: Request, res: Response) => {
-    const currentUser = req['currentUser'] as DecodedIdToken;
-    
-  });
+  public createUser = asyncHandler(
+    async (req: Request, res: Response) => {
+      const user = req['user'] as UserRecord;
+      const { displayName, email, uid } = user;
+      const newUser = new User(uid, displayName ?? '', email ?? '');
+      const created = await this.userService.createUser(newUser);
+      res.json(created);
+    },
+  );
 
-  public updateUser = asyncHandler(async (req, res) => {
-    // todo: extract isRole utils from middlewares, use here
-    // if currentUser.uid === req.body.uid || req.role==admin
-  });
+  public deleteUser = asyncHandler(
+    async (req: Request, res: Response) => {
+      const user = req['user'] as UserRecord;
+      const deleted = await this.userService.deleteUser(user.uid);
+      if (!deleted.affected) throw httpError(404);
+      res.json(deleted);
+    },
+  );
+
+  public deleteUserById = asyncHandler(
+    async (req: Request, res: Response) => {
+      const { uid } = req.params;
+      const deleted = await this.userService.deleteUser(uid);
+      if (!deleted.affected) throw httpError(404);
+      res.status(204).json(deleted);
+    },
+  );
+
+  public updateUser = asyncHandler(
+    async (req: Request, res: Response) => {
+      const { uid } = req['user'] as UserRecord;
+      const { name, email } = req.body;
+      const found = await this.userService.getUser(uid);
+      if (!found) throw httpError(404);
+      const updated = await this.userService.updateUser(uid, {
+        name,
+        email,
+      });
+      res.json(updated);
+    },
+  );
+
+  public updateUserById = asyncHandler(
+    async (req: Request, res: Response) => {
+      const { uid } = req.params;
+      const { name, email } = req.body;
+      const found = await this.userService.getUser(uid);
+      if (!found) throw httpError(404);
+      const updated = await this.userService.updateUser(uid, {
+        name,
+        email,
+      });
+      res.json(updated);
+    },
+  );
 }
