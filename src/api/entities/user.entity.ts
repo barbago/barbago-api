@@ -23,11 +23,9 @@ export class User extends BaseEntity {
   email: string;
 
   @OneToOne(() => Client, (client) => client.user)
-  @JoinColumn({ name: 'uid' })
   client?: Client;
 
   @OneToOne(() => Barber, (barber) => barber.user)
-  @JoinColumn({ name: 'uid' })
   barber?: Barber;
 
   @CreateDateColumn({ name: 'created_date' })
