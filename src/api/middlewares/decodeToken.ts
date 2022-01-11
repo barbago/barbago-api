@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { auth } from 'firebase-admin';
+import { isProd } from '../config/environment';
 
 export async function getUserFromUID(uid: string) {
   const user = await auth().getUser(uid);
@@ -34,7 +35,7 @@ export async function decodeToken(
 async function localAuthOverride(req: Request) {
   const uid = req.headers.authorization;
   if (
-    process.env.NODE_ENV !== 'production' &&
+    !isProd &&
     req.hostname === 'localhost' &&
     typeof uid === 'string'
   ) {

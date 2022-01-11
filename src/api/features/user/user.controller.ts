@@ -53,19 +53,21 @@ export class UserController {
 
   public deleteUser = asyncHandler(
     async (req: Request, res: Response) => {
-      const user = req['user'] as UserRecord;
-      const deleted = await this.userService.deleteUser(user.uid);
-      if (!deleted.affected) throw httpError(404);
-      res.json(deleted);
+      const { uid } = req['user'] as UserRecord;
+      const found = await this.userService.getUser(uid);
+      if (!found) throw httpError(404);
+      await this.userService.deleteUser(uid);
+      res.json(found);
     },
   );
 
   public deleteUserById = asyncHandler(
     async (req: Request, res: Response) => {
       const { uid } = req.params;
-      const deleted = await this.userService.deleteUser(uid);
-      if (!deleted.affected) throw httpError(404);
-      res.status(204).json(deleted);
+      const found = await this.userService.getUser(uid);
+      if (!found) throw httpError(404);
+      await this.userService.deleteUser(uid);
+      res.status(204).json(found);
     },
   );
 

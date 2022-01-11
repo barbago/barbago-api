@@ -1,4 +1,15 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Barber, Client } from '.';
 
 @Entity()
 export class User extends BaseEntity {
@@ -10,6 +21,23 @@ export class User extends BaseEntity {
 
   @Column()
   email: string;
+
+  @OneToOne(() => Client, (client) => client.user)
+  @JoinColumn({ name: 'uid' })
+  client?: Client;
+
+  @OneToOne(() => Barber, (barber) => barber.user)
+  @JoinColumn({ name: 'uid' })
+  barber?: Barber;
+
+  @CreateDateColumn({ name: 'created_date' })
+  createdDate: Date;
+
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
+
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedat?: Date;
 
   constructor(uid: string, name: string, email: string) {
     super();

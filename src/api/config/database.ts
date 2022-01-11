@@ -18,7 +18,7 @@ export const dbConfig: ConnectionOptions = {
   username: username,
   password: password,
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [...entities],
 
   ...(environment.isProd && {
