@@ -29,6 +29,8 @@ Will be hosted using Firebase. Simplest way to perform hosting, deployment, auth
 
 You can also access a MySQL server from within Firebase, so the default usage of firestore is not a major limitation.
 
+Can host multiple sites in one hosting; https://firebase.google.com/docs/hosting/multisites
+
 ```SQL
 /* https://gis.stackexchange.com/questions/356835/sorting-by-distance-in-mysql */
 
