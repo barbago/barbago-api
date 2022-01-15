@@ -6,7 +6,7 @@ export const notFoundHandler = (
   _res: Response,
   _next: NextFunction,
 ) => {
-  throw httpError(404, 'Resource not found');
+  throw httpError(404);
 };
 
 export const errorHandler = (
@@ -16,9 +16,8 @@ export const errorHandler = (
   _next: NextFunction,
 ) => {
   const { status, message } = err;
-  // console.error(err);
   if (!status || status >= 500) {
-    // Server side error, should absolutely be logged
+    console.error(err);
   }
   return res.status(status || 500).json({
     status: status || 500,

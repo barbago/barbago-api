@@ -1,6 +1,9 @@
-import { app } from './app';
-import { config } from './config';
+import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin';
+import 'firebase-functions';
 
-app.listen(config.port, () =>
-  console.log(`http://localhost:${config.port}`),
-);
+admin.initializeApp();
+
+import { app } from './api';
+
+export const api = functions.https.onRequest(app);
