@@ -4,6 +4,7 @@
     "name": "",
     "username": "",
     "host": "",
-    "password": ""
+    "password": "",
+    "prod_host": ""
   }
 }
