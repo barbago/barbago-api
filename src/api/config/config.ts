@@ -1,9 +1,7 @@
-import * as functions from 'firebase-functions';
-
-export const env = functions.config().config;
-
-export const database_config = env.database as {
-  [key: string]: string;
-};
-export const { prod_host, host, port, name, username, password } =
-  database_config;
+export const {
+  DATABASE_HOST: host,
+  DATABASE_PORT: port,
+  DATABASE_NAME: name,
+  DATABASE_USER: username,
+  DATABASE_PASSWORD: password,
+} = process.env;
