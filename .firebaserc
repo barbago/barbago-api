@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "barbago-859cf"
+    "dev": "barbago-fd2c8",
+    "prod": "barbago-prod"
   }
 }

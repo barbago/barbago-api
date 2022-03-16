@@ -8,7 +8,7 @@ import {
 import { config, environment } from './';
 import { entities } from '../entities';
 
-const { host, port, name, username, password, prod_host } = config;
+const { host, port, name, username, password } = config;
 
 export const dbConfig: ConnectionOptions = {
   type: 'mysql',
@@ -22,7 +22,6 @@ export const dbConfig: ConnectionOptions = {
   entities: [...entities],
 
   ...(environment.isProd && {
-    host: prod_host,
     logging: false,
     synchronize: false,
   }),
