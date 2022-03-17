@@ -19,8 +19,6 @@ You can set variables one at a time or use a json file in the below format:
 
 ## Todo
 
-- Finish setting up auth on the new account (might have to redo google oauth stuff)
-- Get UI to successfully query backend
 - Create an ERD for the different models and relationships
 - Refactor into a monorepo so I can deploy react native code to web
 - Finish setting up Multisite for prod

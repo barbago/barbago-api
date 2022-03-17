@@ -10,6 +10,8 @@ export const userRouter = Router();
 
 /**
  * @api {post} /user/ Create a new user
+ * @apiBody {String} name
+ * @apiBody {String} email
  *
  * @apiGroup Users
  * @apiName createUser

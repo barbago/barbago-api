@@ -37,8 +37,8 @@
     "version": "1.0.0",
     "title": "Barbago API Docs",
     "description": "Documentation for Barbago's backend REST API written with Express and TypeScript",
-    "url": "https://api.barbago.app",
-    "sampleUrl": "http://api.barbago.app/user"
+    "url": "https://dev.api.barbago.app",
+    "sampleUrl": "https://dev.api.barbago.app"
   },
   "dependencies": {
     "compression": "^1.7.4",
