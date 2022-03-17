@@ -1,6 +1,24 @@
 {
   "projects": {
-    "dev": "barbago-fd2c8",
+    "dev": "barbago-dev",
     "prod": "barbago-prod"
+  },
+  "targets": {
+    "barbago-dev": {
+      "hosting": {
+        "api-dev": [
+          "api-barbago-dev"
+        ],
+        "api-docs": [
+          "docs-barbago-dev"
+        ],
+        "site": [
+          "barbago-dev"
+        ]
+      }
+    },
+    "barbago-prod": {
+      "hosting": {}
+    }
   }
 }

@@ -20,10 +20,10 @@ You can set variables one at a time or use a json file in the below format:
 ## Todo
 
 - Finish setting up auth on the new account (might have to redo google oauth stuff)
-- Figure out how to run functions from domain barbago.app [Hosting Config](https://firebase.google.com/docs/hosting/functions#create_an_http_function_to_your_hosting_site)
-- Figure out how to get environment variables to work on local environment (might be dotenv.config('filepath') or something)
 - Get UI to successfully query backend
 - Create an ERD for the different models and relationships
+- Refactor into a monorepo so I can deploy react native code to web
+- Finish setting up Multisite for prod
 - Create [GitHub Action Firebase Workflow](https://medium.com/firebase-developers/the-comprehensive-guide-to-github-actions-and-firebase-hosting-818502d86c31)
 
 ## Notes

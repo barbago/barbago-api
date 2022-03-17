@@ -37,8 +37,8 @@
     "version": "1.0.0",
     "title": "Barbago API Docs",
     "description": "Documentation for Barbago's backend REST API written with Express and TypeScript",
-    "url": "https://us-central1-barbago-fd2c8.cloudfunctions.net/api",
-    "sampleUrl": "http://localhost:5001/barbago-fd2c8/us-central1/api/user"
+    "url": "https://api.barbago.app",
+    "sampleUrl": "http://api.barbago.app/user"
   },
   "dependencies": {
     "compression": "^1.7.4",
@@ -47,7 +47,7 @@
     "express": "^4.17.2",
     "express-async-handler": "^1.2.0",
     "firebase-admin": "^10.0.1",
-    "firebase-functions": "^3.18.1",
+    "firebase-functions": "^3.19.0",
     "helmet": "^5.0.0",
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
